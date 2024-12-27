@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <title>Random Quote Generator</title>
+
+    <script>
+      window.onload = init;
+      const QUOTES = [
+        {
+          quote:
+            'Do not pity the dead, Harry. Pity the living, and, above all those who live without love.',
+          author: 'Albus Dumbledore',
+        },
+        {
+          quote: 'It is impossible to manufacture or imitate love',
+          author: 'Horace Slughorn',
+        },
+        {
+          quote:
+            "Being different isn't a bad thing. I mean that you are brave enough to be yourself.",
+          author: 'Luna Lovegood',
+        },
+        {
+          quote:
+            'If you want to know what a man’s like, take a good look at how he treats his inferiors, not his equals.',
+          author: 'Sirius Black',
+        },
+        {
+          quote:
+            'Never trust anything that can think for itself if you can’t see where it keeps its brain.',
+          author: 'Arthur Weasley',
+        },
+        {
+          quote: 'Every human life is worth the same, and worth saving.',
+          author: 'Kingsley Shacklebolt',
+        },
+        {
+          quote: 'Have a biscuit, Potter.',
+          author: 'Minerva McGonagall',
+        },
+        {
+          quote:
+            'Happiness can be found even in the darkest of times if one only remembers to turn on the light.',
+          author: 'Albus Dumbledore',
+        },
+        {
+          quote: 'Socks are Dobby’s favorite, favorite clothes, sir!',
+          author: 'Dobby',
+        },
+      ];
+      function init() {
+        generateQuote();
+      }
+      function generateQuote() {
+        console.log('generate quote');
+        let quoteSize = QUOTES.length;
+        let randomIndex = Math.floor(Math.random() * quoteSize);
+        let randomQuoteData = QUOTES[randomIndex];
+
+        let twitterLink =
+          'https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text=';
+
+        //Add The quote
+        let quoteInApiFormat = randomQuoteData.quote.replace(/ /g, '%20');
+        twitterLink += quoteInApiFormat;
+        //Add the Author
+        let authorInApiFormat = randomQuoteData.author.replace(/ /g, '%20');
+        twitterLink += ' - ' + authorInApiFormat;
+
+        document.getElementById('tweet-quote').href = twitterLink;
+        document.getElementById('text').innerText = randomQuoteData.quote;
+        document.getElementById('author').innerText = randomQuoteData.author;
+      }
+    </script>
+  </head>
+  <body>
+   <div class="container">
+    <div class="row py-5">
+     <div class="col-md-8 offset-md-2">
+    <wrapper id="quote-box">
+      <div class="card">
+       <div class="card-header text-center">Random Quote Machine</div>
+        <div class="card-body">
+          <h5 class="card-title"><div id="text"></div></h5>
+          <p class="card-text">
+                  <div id="author"></div>
+          </p>
+          <button id="new-quote" class="btn btn-block btn-success" onClick="generateQuote();">
+        New Quote
+      </button>
+      <a href="#" class="btn btn-block btn-primary" target="_blank" id="tweet-quote"
+        >Tweet Quote</a>
+        </div>
+        </div>
+     
+    </wrapper>
+    </div>
+    </div>
+   </div>
+   </body>
+   
+   
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
